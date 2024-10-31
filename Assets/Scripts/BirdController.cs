@@ -17,6 +17,8 @@ public class BirdController : MonoBehaviour
     void Update()
     {
         //För varje frame, addera vektorn Speed till positionsvektorn
+        //Multiplicerar med Time.deltaTime för att skala hastigheten till Speed per sekund i stället för
+        //speed per frame. 
         transform.Translate(Speed * Time.deltaTime);
         KeyboardControl();  
 
