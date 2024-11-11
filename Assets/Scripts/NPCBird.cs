@@ -2,26 +2,52 @@ using UnityEngine;
 
 public class NPCBird : MonoBehaviour
 {
-    GameObject cloud;
-    float Speed = 1; 
+   
+
+    GameObject[] clouds;
+    float Speed = 2; 
+
+    //Variabel ska peka på det moln som fågeln ska gå till härnäst. 
+    //0 betyder första molnet i arrayen, 1 betyder andra molnet i arrayen
+     int CloudIndex = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Skapar ett objekt som är länkat till molnets spelobjekt
-        cloud = GameObject.Find("cloud");
+        //Alla moln är taggade som clouds. I detta fall läses båda molnen in till en array
+        //av spelobjekt
+        clouds = GameObject.FindGameObjectsWithTag("cloud");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FINNS TVÅ ALTERNATIV ATT FÅ FÅGELN ATT RÖRA SEJ MOT MOLNET
 
+        //OM Avståndet mellan fågeln och molnet är mindre än 0.5 ska vi uppdatera CloudIndex, dvs. i praktiken
+        //byta destionationen till det andra målnet
+        if(Vector2.Distance(transform.position, clouds[CloudIndex].transform.position) < 0.5f)
+        {
+            
+            //OM cloudindex var 0 ska det nu bli 1
+            if(CloudIndex == 0)
+            {
+                CloudIndex = 1;
+            }
+
+            //OM cloudindex var 1 ska det nu bli 0
+            else
+            {
+                CloudIndex = 0;
+            }
+        }
+
+
+        //FINNS TVÅ ALTERNATIV ATT FÅ FÅGELN ATT RÖRA SEJ MOT MOLNET
         //ALTERNATIV 1:
         //-------------
         //Skapar en vektor som går från fågeln till molnet genom att subrathera
         //molnets positionsvektor med fågelns positionsvektor
-        Vector2 Direction = cloud.transform.position - transform.position;
+        Vector2 Direction = clouds[CloudIndex].transform.position - transform.position;
 
         //Normaliserar Direction-vektorn (längden blir nu 1, men riktningen samma som tidigare)
         Direction.Normalize();
