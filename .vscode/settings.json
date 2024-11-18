@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GravitationalLaw.sln"
+    "dotnet.defaultSolution": "vektorerOKrafter.sln"
 }
