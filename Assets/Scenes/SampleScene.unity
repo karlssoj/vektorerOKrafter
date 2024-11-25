@@ -449,7 +449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PushForce: {x: 0, y: 0}
-  JumpForce: {x: 0, y: 10000}
 --- !u!50 &1697581776
 Rigidbody2D:
   serializedVersion: 5
@@ -462,7 +461,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -535,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199d91cbe03bd1347be3444bf115ed67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StaticFriction: 0.7
-  KineticFriction: 0.2
+  StaticFriction: 0.5
+  KineticFriction: 0.1
 --- !u!1 &2037922422
 GameObject:
   m_ObjectHideFlags: 0
