@@ -10,6 +10,7 @@ public class Force : MonoBehaviour
     Vector2 Velocity;
 
     Rigidbody2D PhysicsEngine;
+    Friction FrictionEngine;
 
     bool OnGround = false;
 
@@ -20,13 +21,14 @@ public class Force : MonoBehaviour
     { 
         //Hämtar en referens till spelobjektets Rigidbody2D-komponent
         PhysicsEngine = GetComponent<Rigidbody2D>();
+        FrictionEngine = GetComponent<Friction>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Utsätter bilen för en kontinuerlig "push-kraft" rakt till höger
-        PhysicsEngine.AddForce(PushForce);
+        FrictionEngine.ApplyForce(PushForce);
 
         if(Input.GetKeyDown(KeyCode.Space) == true && OnGround == true)
         {
